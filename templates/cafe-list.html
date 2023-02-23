@@ -1,0 +1,78 @@
+{% extends 'bootstrap/base.html' %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+{% block title %}Cafe List{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<h1 class="list-title">List of Cafes</h1>
+<table class="table">
+    <tr class="title-row">
+        <td><strong>Image</strong></td>
+        <td><strong>Cafe Name</strong></td>
+        <td><strong>Location</strong></td>
+        <td><strong>Public Restrooms</strong></td>
+        <td><strong>Power Sockets Available</strong></td>
+        <td><strong>Wifi</strong></td>
+        <td><strong>Cell Service</strong></td>
+        <td><strong>Number of Seats</strong></td>
+        <td><strong>Coffee Price</strong></td>
+    </tr>
+    {% for cafe in list %}
+    <tr>
+        <td>
+            <img src="{{ cafe.img_url }}">
+        </td>
+        <td>
+            {{ cafe.name }}
+        </td>
+        <td>
+            <a href="{{ cafe.map_url }}">{{ cafe.location }}</a>
+        </td>
+        <td>
+            {% if cafe.has_toilet == True %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </td>
+        <td>
+            {% if cafe.has_sockets == True %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </td>
+        <td>
+            {% if cafe.has_wifi == True %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </td>
+        <td>
+            {% if cafe.can_take_calls == True %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </td>
+        <td>
+            {{ cafe.seats }}
+        </td>
+        <td>
+            {{ cafe.coffee_price }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="container-fluid footer">
+    <p>Copyright &copy; Cafe Spot 2022</p>
+    <a role="button" class="btn btn-light" id='home-button' href="{{ url_for('home') }}">Home</a>
+
+</div>
+
+{% endblock %}
