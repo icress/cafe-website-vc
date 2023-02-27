@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 {% endblock %}
 {% block title %}Cafe List{% endblock %}
-{% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
 
 <h1 class="list-title">List of Cafes</h1>
@@ -70,7 +69,7 @@
 </table>
 
 <div class="container-fluid footer">
-    <p>Copyright &copy; Cafe Spot 2022</p>
+    <p>Copyright &copy; Cafe Spot {{year}}</p>
     <a role="button" class="btn btn-light" id='home-button' href="{{ url_for('home') }}">Home</a>
 
 </div>

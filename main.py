@@ -5,7 +5,7 @@ from wtforms import StringField, SubmitField, SelectField, BooleanField
 from wtforms.validators import DataRequired, URL
 from flask_sqlalchemy import SQLAlchemy
 import os
-
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -55,11 +55,15 @@ class CafeForm(FlaskForm):
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    current_year = datetime.today().year
+
+    return render_template("index.html", year=current_year)
 
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
+    current_year = datetime.today().year
+
     cafe_form = CafeForm()
     if cafe_form.validate_on_submit():
         new_cafe = Cafe()
@@ -77,13 +81,15 @@ def add():
         db.session.add(new_cafe)
         db.session.commit()
         return redirect(url_for('cafe_list'))
-    return render_template('add.html', form=cafe_form)
+    return render_template('add.html', form=cafe_form, year=current_year)
 
 
 @app.route('/list')
 def cafe_list():
+    current_year = datetime.today().year
+
     list_of_cafes = db.session.query(Cafe).all()
-    return render_template('cafe-list.html', list=list_of_cafes)
+    return render_template('cafe-list.html', list=list_of_cafes, year=current_year)
 
 
 if __name__ == "__main__":
