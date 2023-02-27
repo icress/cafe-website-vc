@@ -19,10 +19,16 @@ box-shadow: 0 0 4px 4px;
 .home-img {
 background-image: linear-gradient(rgba(0,0,0,0.5),
 rgba(0,0,0,0.5)), url('/static/coffee-home.jpg');
-height: 90vh;
+height: 70vh;
 background-size: cover;
-margin: 0 0 10%;
-background-repeat: no-repeat
+background-repeat: no-repeat;
+}
+
+@media (max-width: 1000px) {
+.home-img {
+height: 40vh;
+margin-bottom: 10%;
+}
 }
 
 table {

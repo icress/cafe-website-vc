@@ -32,6 +32,11 @@ class Cafe(db.Model):
     coffee_price = db.Column(db.String, nullable=False)
 
 
+# This created the database using the class above
+with app.app_context():
+    db.create_all()
+
+
 class CafeForm(FlaskForm):
     cafe = StringField('Cafe name', validators=[DataRequired()])
     location = StringField('Location', validators=[DataRequired()])
