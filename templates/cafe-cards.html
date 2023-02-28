@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+
+<div class="bg-image img-fluid cafe-img">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <h1 class="title">All Cafes</h1>
+
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    {% for cafe in list %}
+
+
+    <div class="col-lg-3 col-md-6 col-sm-8">
+        <div class="card">
+            <img src="{{cafe.img_url}}" class="card-img-top" alt="cafe-img">
+            <div class="card-body">
+                <h3>{{cafe.name}}</h3>
+                <p><a href="{{cafe.map_url}}">{{cafe.location}}</a></p>
+                <p>Coffee price: {{cafe.coffee_price}}</p>
+                <p>Wifi: {% if cafe.has_wifi == True %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}</p>
+                <p>Restrooms: {% if cafe.has_toilet == True %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}</p>
+                <p>Phone service: {% if cafe.can_take_calls == True %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}</p>
+                <p>Power sockets: {% if cafe.has_sockets == True %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}</p>
+                <p>Number of seats: {{cafe.seats}}</p>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+{% include 'footer.html' %}

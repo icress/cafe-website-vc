@@ -92,6 +92,13 @@ def cafe_list():
     return render_template('cafe-list.html', list=list_of_cafes, year=current_year)
 
 
+@app.route('/cafe-cards')
+def cafe_cards():
+    current_year = datetime.today().year
+    list_of_cafes = db.session.query(Cafe).all()
+    return render_template('cafe-cards.html', list=list_of_cafes, year=current_year)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
