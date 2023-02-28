@@ -69,13 +69,16 @@ margin: 20px 0;
 .btn-primary {
 background-color: #2D2424;
 border-color: #2D2424;
---bs-btn-active-bg: #B85C38;
---bs-btn-active-border-color: #B85C38;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
 background-color: #B85C38;
 border-color: #B85C38;
+}
+
+.btn-primary:active, .btn-primary.active {
+background-color: #B85C38 !important;
+border-color: #B85C38 !important;
 }
 
 .btn-secondary {
