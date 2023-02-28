@@ -54,7 +54,6 @@ margin: 20px;
 
 .add-container {
 background-color: #E0C097;
-height: 90vh;
 padding: 5% 10%;
 margin-bottom: 5%;
 }
@@ -110,8 +109,12 @@ text-align: center;
 background-color: antiquewhite;
 }
 
-.card p {
+.card-text {
 margin: 0;
+}
+
+.delete-link {
+margin-top: 10px;
 }
 
 .page-title {

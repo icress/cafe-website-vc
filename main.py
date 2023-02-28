@@ -80,7 +80,7 @@ def add():
 
         db.session.add(new_cafe)
         db.session.commit()
-        return redirect(url_for('cafe_list'))
+        return redirect(url_for('cafe_cards'))
     return render_template('add.html', form=cafe_form, year=current_year)
 
 
@@ -99,7 +99,13 @@ def cafe_cards():
     return render_template('cafe-cards.html', list=list_of_cafes, year=current_year)
 
 
+@app.route('/delete/<int:cafe_id>')
+def delete_cafe(cafe_id):
+    cafe_to_delete = Cafe.query.get(cafe_id)
+    db.session.delete(cafe_to_delete)
+    db.session.commit()
+    return redirect(url_for('cafe_cards'))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
-
-# Branch test

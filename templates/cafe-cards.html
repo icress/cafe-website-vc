@@ -16,29 +16,30 @@
             <img src="{{cafe.img_url}}" class="card-img-top" alt="cafe-img">
             <div class="card-body">
                 <h3>{{cafe.name}}</h3>
-                <p><a href="{{cafe.map_url}}">{{cafe.location}}</a></p>
-                <p>Coffee price: {{cafe.coffee_price}}</p>
-                <p>Wifi: {% if cafe.has_wifi == True %}
+                <p class="card-text"><a href="{{cafe.map_url}}">{{cafe.location}}</a></p>
+                <p class="card-text">Coffee price: {{cafe.coffee_price}}</p>
+                <p class="card-text">Wifi: {% if cafe.has_wifi == True %}
                     Yes
                     {% else %}
                     No
                     {% endif %}</p>
-                <p>Restrooms: {% if cafe.has_toilet == True %}
+                <p class="card-text">Restrooms: {% if cafe.has_toilet == True %}
                     Yes
                     {% else %}
                     No
                     {% endif %}</p>
-                <p>Phone service: {% if cafe.can_take_calls == True %}
+                <p class="card-text">Phone service: {% if cafe.can_take_calls == True %}
                     Yes
                     {% else %}
                     No
                     {% endif %}</p>
-                <p>Power sockets: {% if cafe.has_sockets == True %}
+                <p class="card-text">Power sockets: {% if cafe.has_sockets == True %}
                     Yes
                     {% else %}
                     No
                     {% endif %}</p>
-                <p>Number of seats: {{cafe.seats}}</p>
+                <p class="card-text">Number of seats: {{cafe.seats}}</p>
+                <p class="delete-link">Delete? <a href="{{url_for('delete_cafe', cafe_id=cafe.id)}}">✘</a></p>
             </div>
         </div>
     </div>
